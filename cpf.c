@@ -1,3 +1,4 @@
+//Benjamin Besic 3AHIF
 #include <stdio.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -8,7 +9,7 @@
 int main(int argc, char const *argv[]){
     int fd = open(argv[1],O_RDWR);
     char text[256];
-    read(fd,text,sizeof(text));
+    int numbers=read(fd,text,sizeof(text));
 
     fd=open(argv[2],O_WRONLY);
 
@@ -17,7 +18,8 @@ int main(int argc, char const *argv[]){
       fd=open(argv[2],O_WRONLY);
     }
 
-    write(fd,text,sizeof(text));
+    write(fd,text,numbers);
+    close(fd);
 
     return 0;
 }
